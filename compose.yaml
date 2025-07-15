@@ -1,0 +1,17 @@
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow
+    environment:
+      - AIRFLOW_HOME=/workspace/airflow
+      - AIRFLOW__CORE__DAGS_FOLDER=/workspace/rec_paper_bot/dags
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/workspace
+      - ./db:/db
+    command: airflow standalone
