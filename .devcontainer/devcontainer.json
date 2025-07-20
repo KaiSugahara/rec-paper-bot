@@ -7,6 +7,10 @@
     "workspaceFolder": "/workspace",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "postStartCommand": "poetry install --with=dev",
+    "runArgs": [
+        "--env-file",
+        ".env"
+    ],
     "updateRemoteUserUID": true,
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:latest": {}
@@ -16,7 +20,8 @@
             "extensions": [
                 "charliermarsh.ruff",
                 "ms-toolsai.jupyter",
-                "njpwerner.autodocstring"
+                "njpwerner.autodocstring",
+                "alexcvzz.vscode-sqlite"
             ]
         }
     }
