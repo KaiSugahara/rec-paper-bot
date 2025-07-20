@@ -43,7 +43,7 @@ def sample_no_summarized_papers(langs: list[str]) -> list[dict]:
             paper.id NOT IN t
     """.format(langs="', '".join(langs))
 
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
 
     return df.sample(n=1, shuffle=True).to_dicts()

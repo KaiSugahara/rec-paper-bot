@@ -13,7 +13,7 @@ def save_paper_summary_to_database(paper_summary: PaperSummary):
         paper_summary (PaperSummary): The summary
     """
 
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         c = conn.cursor()
 
         # Delete record if exists.

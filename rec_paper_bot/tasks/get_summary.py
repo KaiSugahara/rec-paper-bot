@@ -37,7 +37,7 @@ def get_summary(paper: Paper, lang: str) -> PaperSummary:
         .format(id=paper["id"], lang=lang)
     )
 
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
 
     if df.height != 1:

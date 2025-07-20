@@ -36,7 +36,7 @@ def log_post_time(paper: Paper, lang: str, post_time: str):
         )
     )
 
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         c = conn.cursor()
         c.execute(query)
         conn.commit()

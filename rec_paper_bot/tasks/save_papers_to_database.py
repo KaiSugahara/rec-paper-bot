@@ -3,7 +3,6 @@ import os
 import sqlite3
 
 from airflow.sdk import task
-
 from rec_paper_bot.schemas import Paper
 
 
@@ -22,7 +21,7 @@ def save_papers_to_database(papers_json_path: str):
     print("# of papers:", len(papers))
 
     # Save papers to the database
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         c = conn.cursor()
 
         c.execute(

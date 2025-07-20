@@ -43,7 +43,7 @@ def sample_summarized_but_not_posted_papers(lang: str) -> list[Paper]:
         .format(lang=lang)
     )
 
-    with sqlite3.connect("/db/papers.db") as conn:
+    with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
 
     return [Paper(**d) for d in df.sample(n=1, shuffle=True).to_dicts()]
