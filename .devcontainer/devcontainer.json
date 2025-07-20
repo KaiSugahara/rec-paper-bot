@@ -1,9 +1,16 @@
 {
     "name": "rec-paper-bot-dev",
-    "dockerComposeFile": "../compose.yaml",
-    "service": "airflow",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": ".."
+    },
     "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "postStartCommand": "poetry install --with=dev",
+    "runArgs": [
+        "--env-file",
+        ".env"
+    ],
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:latest": {}
     },
