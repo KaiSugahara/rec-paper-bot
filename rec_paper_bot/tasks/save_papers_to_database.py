@@ -3,6 +3,7 @@ import os
 import sqlite3
 
 from airflow.sdk import task
+
 from rec_paper_bot.schemas import Paper
 
 
@@ -34,7 +35,6 @@ def save_papers_to_database(papers_json_path: str):
                     , updated_time text
                     , authors text
                     , abstract text
-                    , is_posted integer default 0
                 )
             """
         )
@@ -47,9 +47,23 @@ def save_papers_to_database(papers_json_path: str):
                     , objective text
                     , methodology text
                     , finding text
+                    , foreign key (id) references paper(id)
                 )
             """
         )
+
+        c.execute(
+            """
+                CREATE TABLE IF NOT EXISTS paper_post (
+                    id text
+                    , lang text
+                    , post_time text
+                    , foreign key (id) references paper(id)
+                )
+            """
+        )
+
+        c.execute("PRAGMA foreign_keys = ON")
 
         c.executemany(
             """
