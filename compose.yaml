@@ -15,6 +15,7 @@ services:
       - |
         airflow db migrate
         echo "{\"admin\": \"${AIRFLOW_PASSWORD}\"}" > /workspace/airflow/simple_auth_manager_passwords.json.generated
+        python3 init_db.py
   airflow:
     build:
       context: .
