@@ -1,4 +1,5 @@
 from airflow.sdk import dag, task
+from rec_paper_bot.lib.alert_callback import on_failure_callback, on_success_callback
 from rec_paper_bot.tasks import sample_no_summarized_papers, save_paper_summary_to_database, summarize_abstract
 
 default_args = {
@@ -11,6 +12,8 @@ default_args = {
     default_args=default_args,
     schedule="0 * * * *",
     catchup=False,
+    on_success_callback=on_success_callback,
+    on_failure_callback=on_failure_callback,
 )
 def generate_dag():
     @task
