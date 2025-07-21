@@ -27,10 +27,10 @@ def sample_no_summarized_papers(langs: list[str]) -> list[dict]:
             GROUP BY
                 id
             HAVING
-                COUNT(*) = 2
+                COUNT(*) = {lang_num}
         )
         SELECT
-            id
+            paper.id
             , title
             , url
             , published_time
@@ -39,9 +39,12 @@ def sample_no_summarized_papers(langs: list[str]) -> list[dict]:
             , abstract
         FROM
             paper
+            INNER JOIN paper_classification
+                ON paper.id = paper_classification.id
         WHERE
             paper.id NOT IN t
-    """.format(langs="', '".join(langs))
+            AND paper_classification.is_recsys = 1
+    """.format(langs="', '".join(langs), lang_num=len(langs))
 
     with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
