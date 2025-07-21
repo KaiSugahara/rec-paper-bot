@@ -14,31 +14,14 @@ services:
         airflow db migrate
         echo "{\"admin\": \"${AIRFLOW_PASSWORD}\"}" > /workspace/airflow/simple_auth_manager_passwords.json.generated
         python3 init_db.py
-  airflow-dev:
+  airflow:
     build:
       context: .
       dockerfile: Dockerfile
     env_file:
       - ./.env
     ports:
-      - 8080:80
+      - 50000:8080
     volumes:
       - .:/workspace
-    command:
-      - /bin/bash
-      - -c
-      - 'airflow api-server --port 80 & airflow scheduler & airflow dag-processor & airflow triggerer'
-  airflow-prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - ./.env
-    expose:
-      - 80
-    volumes:
-      - .:/workspace
-    command:
-      - /bin/bash
-      - -c
-      - 'airflow api-server --port 80 & airflow scheduler & airflow dag-processor & airflow triggerer'
+    command: airflow standalone
