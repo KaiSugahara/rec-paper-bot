@@ -30,10 +30,6 @@ def post_paper_summary(paper: Paper, summary: PaperSummary) -> str:
         text = validate_post_text(f"[{key.upper()}] {summary[key]}")
         post_id = poster.post(text, in_reply_to_post_id=post_id)
 
-    # Post Credit
-    text = validate_post_text("Summarized by gemini-1.5-flash")
-    poster.post(text, in_reply_to_post_id=post_id)
-
     # Get the post time
     post_time = datetime.now().isoformat(timespec="seconds")
 
