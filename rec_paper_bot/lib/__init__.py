@@ -1,5 +1,6 @@
 from twitter_text import parse_tweet
 
+from .classifier import Classifier as Classifier
 from .poster import Poster as Poster
 from .summarizer import AbstractSummarizer as AbstractSummarizer
 

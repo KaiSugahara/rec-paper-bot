@@ -36,6 +36,16 @@ def init_db():
 
         c.execute(
             """
+                CREATE TABLE IF NOT EXISTS paper_classification (
+                    id text
+                    , is_recsys int
+                    , foreign key (id) references paper(id)
+                )
+            """
+        )
+
+        c.execute(
+            """
                 CREATE TABLE IF NOT EXISTS paper_post (
                     id text
                     , lang text
