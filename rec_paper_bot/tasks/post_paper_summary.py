@@ -26,9 +26,8 @@ def post_paper_summary(paper: Paper, summary: PaperSummary) -> str:
     post_id = poster.post(text)
 
     # Post Objectives/Methodology/Findings of the paper
-    lang = summary["lang"]
     for key in ["objective", "methodology", "finding"]:
-        text = validate_post_text(f"[{lang}] {summary[key]}")
+        text = validate_post_text(f"[{key.upper()}] {summary[key]}")
         post_id = poster.post(text, in_reply_to_post_id=post_id)
 
     # Post Credit
