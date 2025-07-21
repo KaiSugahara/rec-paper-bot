@@ -10,7 +10,7 @@ default_args = {
 @dag(
     "posting",
     default_args=default_args,
-    schedule="0 */8 * * *",
+    schedule="0 */6 * * *",
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,
