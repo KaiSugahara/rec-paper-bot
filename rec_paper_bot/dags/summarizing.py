@@ -18,6 +18,10 @@ default_args = {
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,
+    jinja_environment_kwargs={
+        "variable_start_string": "[[",
+        "variable_end_string": "]]",
+    },
 )
 def generate_dag():
     @task
