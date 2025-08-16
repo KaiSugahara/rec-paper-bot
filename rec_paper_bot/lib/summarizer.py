@@ -13,12 +13,14 @@ class AbstractSummarizer:
         self.prompts: dict[str, str] = {
             "en": textwrap.dedent("""
                 Please provide a brief summary of the objective, methodology, and finding from the abstract of the given paper.
+                Note that mathematical formulas should be avoided.
 
                 Input Abstract:
                 {abstract}
             """).strip(),
             "ja": textwrap.dedent("""
                 Abstract から objective, methodology, finding を日本語で端的に要約してください。
+                ただし、数式は避けてください。
 
                 Input Abstract:
                 {abstract}
