@@ -1,9 +1,13 @@
+from datetime import timedelta
+
 from airflow.sdk import dag
 from rec_paper_bot.lib.alert_callback import on_failure_callback, on_success_callback
 from rec_paper_bot.tasks import classify_paper, sample_no_classified_paper, save_paper_class_to_database
 
 default_args = {
     "owner": "airflow",
+    "retries": 3,
+    "retry_delay": timedelta(minutes=10),
 }
 
 

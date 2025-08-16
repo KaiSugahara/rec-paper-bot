@@ -1,9 +1,13 @@
+from datetime import timedelta
+
 from airflow.sdk import dag
 from rec_paper_bot.lib.alert_callback import on_failure_callback, on_success_callback
 from rec_paper_bot.tasks import get_summary, log_post_time, post_paper_summary, sample_summarized_but_not_posted_papers
 
 default_args = {
     "owner": "airflow",
+    "retries": 3,
+    "retry_delay": timedelta(minutes=10),
 }
 
 
