@@ -6,15 +6,15 @@ from rec_paper_bot.tasks import generate_search_query, save_papers_to_database, 
 
 default_args = {
     "owner": "airflow",
-    "retries": 3,
-    "retry_delay": timedelta(minutes=10),
+    "retries": 11,
+    "retry_delay": timedelta(hours=1),
 }
 
 
 @dag(
     "crawling",
     default_args=default_args,
-    schedule="0 * * * *",
+    schedule="* */12 * * *",
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,

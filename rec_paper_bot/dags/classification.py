@@ -14,7 +14,7 @@ default_args = {
 @dag(
     "classification",
     default_args=default_args,
-    schedule="*/30 * * * *",
+    schedule="0 * * * *",
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,
