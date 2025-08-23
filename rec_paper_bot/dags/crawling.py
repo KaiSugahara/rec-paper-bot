@@ -14,7 +14,7 @@ default_args = {
 @dag(
     "crawling",
     default_args=default_args,
-    schedule="* */12 * * *",
+    schedule="0 */12 * * *",
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,
