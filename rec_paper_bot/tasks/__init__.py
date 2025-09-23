@@ -1,5 +1,6 @@
 from .classify_paper import classify_paper as classify_paper
 from .generate_search_query import generate_search_query as generate_search_query
+from .get_now import get_now as get_now
 from .get_summary import get_summary as get_summary
 from .log_post_time import log_post_time as log_post_time
 from .post_paper_summary import post_paper_summary as post_paper_summary
