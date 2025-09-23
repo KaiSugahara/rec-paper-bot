@@ -7,7 +7,7 @@ from rec_paper_bot.tasks import get_summary, log_post_time, post_paper_summary, 
 default_args = {
     "owner": "airflow",
     "retries": 3,
-    "retry_delay": timedelta(hours=1),
+    "retry_delay": timedelta(hours=1, minutes=30),
 }
 
 
