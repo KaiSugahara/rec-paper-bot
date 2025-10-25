@@ -26,7 +26,7 @@ default_args = {
     on_failure_callback=on_failure_callback,
 )
 def generate_dag():
-    langs = ["ja", "en"]
+    langs = ["en"]
 
     for lang in langs:
         papers = sample_summarized_but_not_posted_papers(lang=lang)

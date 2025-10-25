@@ -28,7 +28,7 @@ def generate_dag():
     def get_combinations(papers, langs):
         return [{"paper": paper, "lang": lang} for paper in papers for lang in langs]
 
-    langs = ["ja", "en"]
+    langs = ["en"]
 
     papers = sample_no_summarized_papers(langs=langs)
     combinations = get_combinations(papers=papers, langs=langs)

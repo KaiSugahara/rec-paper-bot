@@ -18,13 +18,6 @@ class AbstractSummarizer:
                 Input Abstract:
                 {abstract}
             """).strip(),
-            "ja": textwrap.dedent("""
-                Abstract から objective, methodology, finding を日本語で端的に要約してください。
-                ただし、数式は避けてください。
-
-                Input Abstract:
-                {abstract}
-            """).strip(),
         }
 
     def summarize(self, abstract: str, lang: str) -> Summary:
@@ -41,8 +34,6 @@ class AbstractSummarizer:
         # Get Prompt
         if lang == "en":
             prompt = self.prompts["en"].format(abstract=abstract)
-        elif lang == "ja":
-            prompt = self.prompts["ja"].format(abstract=abstract)
         else:
             raise Exception()
 
