@@ -13,11 +13,11 @@ def generate_search_query() -> str:
 
     # Category
     categories: list[str] = ["cs.AI", "cs.IR", "cs.CV", "cs.SE", "cs.LG"]
-    query_category: str = "%28" + " OR ".join([f"cat:{c}" for c in categories]) + "%29"
+    query_category: str = "(" + " OR ".join([f"cat:{c}" for c in categories]) + ")"
 
     # Keyword
     words: list[str] = ["recommender", "recommendation"]
-    query_word: str = "%28" + " OR ".join([f"all:{w}" for w in words]) + "%29"
+    query_word: str = "(" + " OR ".join([f"all:{w}" for w in words]) + ")"
 
     # Submitted Date
     start_date: str = (datetime.datetime.now() - datetime.timedelta(days=30)).strftime("%Y%m%d")
