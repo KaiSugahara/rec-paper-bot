@@ -48,5 +48,6 @@ def sample_no_summarized_papers(langs: list[str]) -> list[dict]:
 
     with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
+    print("# of papers:", df.height)
 
     return df.sample(n=1, shuffle=True).to_dicts() if df.height > 0 else []

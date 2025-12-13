@@ -37,5 +37,6 @@ def sample_no_classified_paper() -> list[Paper]:
 
     with sqlite3.connect("/workspace/db/papers.db") as conn:
         df = pl.read_database(query, conn)
+    print("# of papers:", df.height)
 
     return [Paper(**d) for d in df.sample(n=1, shuffle=True).to_dicts()] if df.height > 0 else []
