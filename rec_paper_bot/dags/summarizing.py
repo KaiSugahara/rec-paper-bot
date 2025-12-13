@@ -14,7 +14,7 @@ default_args = {
 @dag(
     "summarizing",
     default_args=default_args,
-    schedule="0 * * * *",
+    schedule="0 */5 * * *",
     catchup=False,
     on_success_callback=on_success_callback,
     on_failure_callback=on_failure_callback,
